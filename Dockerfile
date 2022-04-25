@@ -1,7 +1,7 @@
-FROM python:3
-WORKDIR /usr/scr/app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-EXPOSE 5000
-CMD ["python","app.py"]
+FROM python:alpine3.7
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 5001
+ENTRYPOINT [ "python" ]
+CMD [ "demo.py" ]
