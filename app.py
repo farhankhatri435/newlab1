@@ -1,21 +1,14 @@
-from flask import Flask, jsonify, request
-from flask_restful import Api, Resource
-from logic import Add, Subtract, Multiply, Divide
-
+from flask import Flask, jsonify
 
 app = Flask(__name__)
-api = Api(app)
-
-api.add_resource(Add, "/add")
-api.add_resource(Subtract, "/subtract")
-api.add_resource(Multiply, "/multiply")
-api.add_resource(Divide, "/division")
 
 
 @app.route('/')
 def hello_world():
-    return "Hello From Farhan Khatri"
+    return 'Hello this is farhan khatri!'
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+@app.route('/health')
+def health_checking():
+    ret = {'status': 'UP'}
+    return jsonify(ret)
